@@ -1,3 +1,4 @@
+import 'package:ajs_stock2/screen/register_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -51,10 +52,19 @@ class _LoginScreenState extends State<LoginScreen> {
                       Padding(padding: const EdgeInsets.all(5.0),
                         child: TextFormField(
                           controller: _emailController,
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: 'Email',
                             hintText: 'Masukkan Email Anda',
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  _emailController.clear();
+                                });
+                              }, 
+                            icon: 
+                            const Icon(Icons.cancel_outlined),
+                            ),
                           ),
                       ),
                       ),
@@ -79,37 +89,67 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       const SizedBox(height: 16),
-                      RichText(
-                        text: TextSpan(
-                          text: 'Belum punya akun? ',
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'Righteous',
-                          ),
-                          children: [
-                            TextSpan(
-                              text: 'Daftar',
-                              style: const TextStyle(
-                                color: Colors.blue,
-                                decoration: TextDecoration.underline,
+                      Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: RichText(
+                              text: TextSpan(
+                                text: 'Belum punya akun? ',
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: 'Righteous',
+                                ),
+                                children: [
+                                  TextSpan(
+                                    text: 'Register',
+                                    style: const TextStyle(
+                                      fontFamily: 'Righteous',
+                                      color: Colors.blue,
+                                      decoration: TextDecoration.underline,    
+                                    ),
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {
+                                       Navigator.of(context).pushReplacement(MaterialPageRoute(builder :(context) => RegisterScreen(),
+                                       ),
+                                       );
+                                      },
+                                  ),
+                                ],
                               ),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  Navigator.pushNamed(context, '/register');
-                                },
-                            ),
-                          ],
-                        ),
-                        ),
+                              ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                   ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                 
-                },
-                child: const Text('Login'),
+              const SizedBox(height: 16),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                     
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+
+                      ),
+                     fixedSize: Size(225, 40),
+                    ),
+                    child: const Text('Login', style: TextStyle(fontFamily: 'Righteous'),
+                    ),
+                    ),
+                ],
               ),
             ],
           ),
