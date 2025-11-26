@@ -53,9 +53,16 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: TextFormField(
                           controller: _emailController,
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(
+                               borderSide: BorderSide(color: Colors.black),
+                            ),
                             labelText: 'Email',
+                            labelStyle: TextStyle(color: Colors.black),
                             hintText: 'Masukkan Email Anda',
+                             hintStyle: TextStyle(color: Colors.black),
+                             focusedBorder: OutlineInputBorder(
+                               borderSide: BorderSide(color: Colors.black),
+                             ),
                             suffixIcon: IconButton(
                               onPressed: () {
                                 setState(() {
@@ -64,6 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               }, 
                             icon: 
                             const Icon(Icons.cancel_outlined),
+                            color: Colors.black,
                             ),
                           ),
                       ),
@@ -74,9 +82,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           controller: _passwordController,
                          obscureText: !_isPasswordVisible,
                           decoration: InputDecoration(
-                            border: const OutlineInputBorder(),
+                            border: OutlineInputBorder(
+                             borderSide: BorderSide(color: Colors.black),
+                            ),
                             labelText: 'Password',
+                            labelStyle: TextStyle(color: Colors.black),
                             hintText: 'Masukkan Password Anda',
+                            hintStyle: TextStyle(color: Colors.black),
                             suffixIcon: IconButton(
                               icon: Icon(_isPasswordVisible ? Icons.visibility : Icons.visibility_off),
                               onPressed: () {
@@ -84,7 +96,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                   _isPasswordVisible = !_isPasswordVisible;
                                 });
                               },
+                              color: Colors.black,
                             ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black),
+                            )
                           ),
                         ),
                       ),
@@ -139,14 +155,16 @@ class _LoginScreenState extends State<LoginScreen> {
                      
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
+                      backgroundColor: Color.fromRGBO(193, 18, 31, 1.0),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
 
                       ),
                      fixedSize: Size(225, 40),
                     ),
-                    child: const Text('Login', style: TextStyle(fontFamily: 'Righteous'),
+                    child: Text('Login', style: TextStyle(
+                      fontFamily: 'Righteous',
+                      color: Colors.white, ),
                     ),
                     ),
                 ],
